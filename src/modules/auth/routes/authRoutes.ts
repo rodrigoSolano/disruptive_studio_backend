@@ -26,4 +26,6 @@ router.post(
 
 router.get("/logout", AuthController.logout);
 
+router.get("/validate-username/:username", AuthController.validateUsername);
+
 export default router;

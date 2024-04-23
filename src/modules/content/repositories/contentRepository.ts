@@ -7,8 +7,8 @@ export class ContentRepository {
     return content.save();
   }
 
-  static async listContent() {
-    return Content.find()
+  static async listContent(themes: string[] = []) {
+    return Content.find(themes.length ? { theme_id: { $in: themes } } : {})
       .populate("theme_id")
       .populate("createdBy", "username");
   }

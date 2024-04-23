@@ -12,6 +12,14 @@ export class UserRepository {
     return User.findById(userId);
   }
 
+  static async findByEmail(email: string) {
+    return User.findOne({ email });
+  }
+
+  static async findByUsername(username: string) {
+    return User.findOne({ username });
+  }
+
   static async updateUser(userId: string, updateData: UpdateUserDto) {
     return User.findByIdAndUpdate(userId, updateData, { new: true });
   }

@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 
 import statsRouter from "../modules/stats/routes/statsRoutes";
@@ -17,6 +18,7 @@ import connectDatabase from "../config/database";
 const app = express();
 const port = config.port || 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -26,7 +28,7 @@ app.use("/api/stats", authMiddleware, statsRouter);
 
 app.use("/api/users", authMiddleware, userRoutes);
 
-app.use("/api/themes", authMiddleware, themeRoutes);
+app.use("/api/themes", themeRoutes);
 
 app.use("/api/contents", authMiddleware, contentRoutes);
 
